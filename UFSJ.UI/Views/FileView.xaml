@@ -1,0 +1,441 @@
+﻿<UserControl x:Class="UFSJ.Views.FileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:vm="clr-namespace:UFSJ.ViewModels"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="791"
+             d:DesignWidth="435">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BTVC" />
+        <Viewbox x:Shared="false"
+                 x:Key="icon.Twitter">
+            <Grid Width="48"
+                  Height="48"
+                  Visibility="Visible">
+                <Path Data="M359.718397368211,0.00441221471555764C366.973280180711,-0.200491537361813 361.872480620164,6.76413547524862 348.544416655321,14.069215889067 401.424452055711,-2.78028524389811 399.608778227586,18.6843520356124 343.594862211961,29.3834830475753 389.379377592821,30.1549140168136 438.052046049852,56.094754333586 452.075941313524,111.266022796721 453.974165190477,118.90812789926 451.664045561571,118.173478241057 460.408064116258,119.554879303068 479.382490385789,122.552697296233 497.201856840868,122.369256134123 514.608350981493,117.438370819182 512.711073149461,128.864976043791 495.799055327196,136.28686630258 469.400831450243,141.180970306486 459.58332656743,143.003266449065 457.603498686571,142.510804290861 469.318250883836,144.862321014494 483.755018461961,147.757874603361 499.923841704149,148.507340545744 517.000013579149,147.80183517465 503.718336333055,161.440476532072 482.517378081102,168.421036834807 456.283277739305,168.707627410979 439.866712797899,222.064240570158 402.414350737352,260.282853241057 354.896742094774,284.27482711801 243.527525175828,340.592484588713 81.3406584155746,332.421128387541 0,230.051697845549 53.3744871509261,267.351761932463 132.487592924852,275.574692840666 191.141935576219,223.585129852385 152.699659575243,223.585129852385 142.716993559618,197.924714202971 173.241010893602,184.073029632658 144.36750625493,183.816025848479 125.971121062059,175.673844451994 115.246275175828,160.940384979338 111.121488798875,155.3560343934 111.121488798875,154.922333831877 117.804128874559,150.623383636565 125.063787688036,145.8911906434 135.128019560594,143.80429183969 145.439985502977,143.083985443205 115.494001616258,135.463852996916 97.2627775561996,121.56104385385 90.9104444873519,102.917962188811 88.8480512988754,96.7456141663497 88.5177442920394,97.06136428842 95.5296766650863,95.4597483826583 102.459036101121,93.9016352845138 111.3692228687,93.0786219788497 119.28848861577,92.7260981751388 95.7774107349105,80.0499507142013 81.7535383594222,64.5011149598067 78.2057783496566,47.3058139038985 74.823171843309,31.1030570221847 78.2883589160629,35.2544375611251 91.9003507983871,39.9063502503341 152.864805449266,60.6798373413985 213.664106596727,82.9822856141036 249.632124174852,115.998215789885 266.131269682664,70.0123683167403 286.342329252977,40.2072955323165 309.606672514696,18.6179763031905 327.013136137743,2.49594866761618 335.922315825243,-2.61882269850321 325.775495756883,15.1276932908004 330.230604399461,11.9235612107223 336.747083891649,7.64704906472616 341.779188383836,5.36908494958334 350.570234526414,1.67198562154226 356.42072891118,0.0975428623860353 359.718397368211,0.00441221471555764z"
+                      Stretch="Uniform"
+                      Fill="#FF67C1FF"
+                      Width="42"
+                      Height="42"
+                      Margin="0,0,0,0"
+                      RenderTransformOrigin="0.5,0.5" />
+            </Grid>
+        </Viewbox>
+        <Color x:Key='ForegroundColor'>#FF1E1E1E</Color>
+        <Color x:Key='BackgroundColor'>#FFEEEEF2</Color>
+        <Color x:Key='BackgroundNormalColor'>#FFEEEEF2</Color>
+        <Color x:Key='BackgroundHighlightedColor'>#FFF7F7F7</Color>
+        <Color x:Key='BorderBrushHighlightedColor'>#FFCCCEDB</Color>
+        <Color x:Key='BackgroundSelectedColor'>#FF059B13</Color>
+        <Color x:Key='BorderBrushSelectedColor'>#FF059B13</Color>
+        <Storyboard x:Key="OnLoaded1" />
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded"
+                      SourceName="Logo" />
+    </UserControl.Triggers>
+    <Grid x:Name='LayoutRoot'>
+        <Grid.DataContext>
+            <vm:FileViewModel />
+        </Grid.DataContext>
+        <TabControl x:Name='fileTab'
+                    SelectedIndex='2'
+                    HorizontalContentAlignment='Center'
+                    BorderBrush='#FFDADBDC'
+                    Margin='0'
+                    HorizontalAlignment='Stretch'
+                    Width='Auto'
+                    Height='Auto'
+                    VerticalAlignment='Stretch'>
+            <TabItem Header='Options'
+                     Padding='10,6'
+                     VerticalContentAlignment='Stretch'
+                     IsSelected='True'
+                     IsTabStop='False'
+                     BorderBrush='#FFDADBDC'
+                     VerticalAlignment='Bottom'
+                     Width='Auto'>
+                <ScrollViewer VerticalScrollBarVisibility='Auto'
+                              CanContentScroll='True'
+                              PanningMode='VerticalOnly'
+                              Focusable='False'>
+                    <Grid x:Name='OptionGrid'>
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform x:Name='GridTrans' />
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent='FrameworkElement.Loaded'>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName='OptionGrid'
+                                                         Storyboard.TargetProperty='Opacity'
+                                                         From='0'
+                                                         To='1.0'
+                                                         Duration='0:0:0.30' />
+                                        <DoubleAnimation Storyboard.TargetName='GridTrans'
+                                                         Storyboard.TargetProperty='X'
+                                                         From='50'
+                                                         To='0'
+                                                         Duration='0:0:0.35' />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <VirtualizingStackPanel Orientation='Vertical'
+                                                Margin="10">
+                            <Grid Height="100">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Content='Interactions'
+                                       BorderThickness="1,0,0,0"
+                                       BorderBrush="Green"
+                                       VerticalAlignment='Top'
+                                       HorizontalAlignment="Left" />
+                                <CheckBox Content='Always On Top'
+                                          VerticalAlignment='Top'
+                                          BorderThickness='1'
+                                          Margin="10,30,10,0" />
+                                <CheckBox Content='Always Show Task Tab'
+                                          Margin='12,33,10,0'
+                                          VerticalAlignment='Top'
+                                          BorderThickness='1'
+                                          Grid.Column="1" />
+                                <CheckBox Content='Prompt Replace Confirmation'
+                                          Margin='10,56,10,0'
+                                          VerticalAlignment='Top'
+                                          BorderThickness='1' />
+                                <CheckBox Content='Enable Notification'
+                                          Margin='12,56,10,0'
+                                          VerticalAlignment='Top'
+                                          BorderThickness='1'
+                                          Grid.Column="1" />
+                            </Grid>
+                            <Grid Height="80">
+                                <Label Content='Task'
+                                       BorderThickness="1,0,0,0"
+                                       BorderBrush="Green"
+                                       HorizontalAlignment='Left'
+                                       VerticalAlignment='Top'
+                                       Height='26'
+                                       Width='126' />
+                            </Grid>
+                            <Grid Height='100'>
+                                <Label Content='Appearance'
+                                       BorderThickness="1,0,0,0"
+                                       BorderBrush="Green"
+                                       HorizontalAlignment='Left'
+                                       VerticalAlignment='Top'
+                                       Height='27'
+                                       Width='126' />
+                                <ComboBox Margin='10,66,156,0'
+                                          VerticalAlignment='Top'
+                                          SelectedIndex='0'
+                                          IsEditable='True'
+                                          IsReadOnly='True' />
+                                <Button Content='Apply'
+                                        HorizontalAlignment='Right'
+                                        Height='25'
+                                        Margin='0,65,90,0'
+                                        VerticalAlignment='Top'
+                                        Width='61'
+                                        BorderThickness='1' />
+                                <Button Content='Manage'
+                                        Height='25'
+                                        Margin='0,65,24,0'
+                                        VerticalAlignment='Top'
+                                        HorizontalAlignment='Right'
+                                        Width='61'
+                                        BorderThickness='1' />
+                                <ComboBox VerticalAlignment='Top'
+                                          SelectedIndex='0'
+                                          IsSynchronizedWithCurrentItem='True'
+                                          IsReadOnly='True'
+                                          IsEditable='True'
+                                          Margin="10,32,156,0" />
+                                <Button Content='Apply'
+                                        HorizontalAlignment='Right'
+                                        Height='24'
+                                        VerticalAlignment='Top'
+                                        Width='61'
+                                        BorderThickness='1'
+                                        Margin="0,32,90,0" />
+                            </Grid>
+                            <Grid Height='80'>
+                                <Label Content='Updates'
+                                       BorderThickness='1,0,0,0'
+                                       BorderBrush="Green"
+                                       HorizontalAlignment='Left'
+                                       Height='27'
+                                       VerticalAlignment='Top'
+                                       Width='98' />
+                                <TextBlock Text='Check Update'
+                                           HorizontalAlignment='Left'
+                                           Margin='10,37,0,0'
+                                           VerticalAlignment='Top'
+                                           Width='92' />
+                                <ComboBox HorizontalAlignment='Left'
+                                          Height='27'
+                                          SelectedIndex='0'
+                                          Margin='107,32,0,0'
+                                          VerticalAlignment='Top'
+                                          Width='146'>
+                                    <ComboBoxItem Content='Never' />
+                                    <ComboBoxItem Content='After startup' />
+                                    <ComboBoxItem Content='Before startup' />
+                                </ComboBox>
+                                <Button Margin='258,32,0,0'
+                                        HorizontalAlignment='Left'
+                                        VerticalAlignment='Top'
+                                        Width='90'
+                                        Height='27'
+                                        Content='Check' />
+                            </Grid>
+                            <Grid Background="#FF6AC34F"
+                                  Height="30"
+                                  Visibility="{Binding AppUpdateCheck.IsSuccessfullyCompleted,Converter={StaticResource BTVC}}">
+                                <TextBlock HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="White">New Update Available</TextBlock>
+                            </Grid>
+                            <Grid Height='100'
+                                  Margin="0,10,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width='42*' />
+                                    <ColumnDefinition Width='41*' />
+                                </Grid.ColumnDefinitions>
+                                <Label BorderThickness="1,0,0,0"
+                                       BorderBrush="Green"
+                                       Content='{Binding Source={StaticResource UL}, XPath=MW/F/O/@f}'
+                                       HorizontalAlignment='Left'
+                                       VerticalAlignment='Top'
+                                       Height='27'
+                                       Width='126' />
+                                <Label Content='Example'
+                                       HorizontalAlignment='Left'
+                                       Margin='10,56,0,0'
+                                       VerticalAlignment='Top' />
+                                <TextBox Margin='10,33,10,0'
+                                         TextWrapping='Wrap'
+                                         VerticalAlignment='Top'
+                                         Grid.Column='1' />
+                                <ComboBox Margin='10,33,0,0'
+                                          SelectedIndex='0'
+                                          VerticalAlignment='Top'
+                                          IsReadOnly='True'>
+                                    <ComboBoxItem Content='UFSJ Standard' />
+                                    <!--Tag='[filename].[ext].[idx]' />-->
+                                    <!--Tag='[filename].[idx].ufs' />-->
+                                    <ComboBoxItem Content='UFSJ Hex' />
+                                    <!--Tag='[filename}.[idxh].ufsx' />-->
+                                    <ComboBoxItem Content='Extension Suffix (Standard)' />
+                                    <!--Tag='[filename].[ext].[idx]' />-->
+                                    <ComboBoxItem Content='Extension Prefix (New)' />
+                                    <!--Tag='[filename].[idx].[ext]' />-->
+                                    <ComboBoxItem Content='Custom' />
+                                </ComboBox>
+                            </Grid>
+                            <Grid Height='95'>
+                                <Label Content='Scripts'
+                                       BorderThickness="1,0,0,0"
+                                       BorderBrush="Green"
+                                       HorizontalAlignment='Left'
+                                       VerticalAlignment='Top' />
+                            </Grid>
+                        </VirtualizingStackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name='fileTabAbout'
+                     Header='About'
+                     Padding='10,6'
+                     IsTabStop='False'
+                     Width='Auto'>
+                <Grid>
+                    <TextBlock x:Name='Titles'
+                               Text='UFSJ'
+                               FontSize='42'
+                               FontWeight='ExtraBold'
+                               FontStretch='Expanded'
+                               Margin='74,10,0,0'
+                               HorizontalAlignment='Left'
+                               VerticalAlignment='Top'
+                               RenderTransformOrigin='0.5,0.5'
+                               Height='58'
+                               Width='104' />
+                    <TextBlock x:Name='Edition'
+                               Text='#'
+                               FontSize='28'
+                               FontWeight='ExtraBold'
+                               FontStretch='Expanded'
+                               Margin='178,0,0,0'
+                               HorizontalAlignment='Left'
+                               VerticalAlignment='Top'
+                               Height='41' />
+                    <TextBlock x:Name='Beta'
+                               Text='Beta'
+                               HorizontalAlignment='Left'
+                               Margin='183,34,0,0'
+                               VerticalAlignment='Top'
+                               RenderTransformOrigin='0.5,0.5'
+                               FontSize='18'
+                               FontWeight='Bold'>
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform x:Name='FreeTrans' />
+                            </TransformGroup>
+                        </TextBlock.RenderTransform></TextBlock>
+                    <Grid Margin='10,10,0,0'
+                          x:Name='LogoGrid'
+                          HorizontalAlignment='Left'
+                          Width='60'
+                          Height='60'
+                          VerticalAlignment='Top'
+                          Background='{DynamicResource BackgroundSelected}'>
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent='FrameworkElement.Loaded'>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName='Logo'
+                                                         Storyboard.TargetProperty='Width'
+                                                         From='0'
+                                                         To='60'
+                                                         Duration='0:0:0.30'>
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase Amplitude='0.3'
+                                                          EasingMode='EaseOut' />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName='LogoGrid'
+                                                         Storyboard.TargetProperty='Width'
+                                                         From='0'
+                                                         To='60'
+                                                         Duration='0:0:0.30'>
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase Amplitude='0.3'
+                                                          EasingMode='EaseOut' />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName='Titles'
+                                                         Storyboard.TargetProperty='Opacity'
+                                                         From='0'
+                                                         To='1.0'
+                                                         Duration='0:0:0.30' />
+                                        <DoubleAnimation Storyboard.TargetName='Edition'
+                                                         Storyboard.TargetProperty='Opacity'
+                                                         From='0'
+                                                         To='1.0'
+                                                         Duration='0:0:0.30' />
+                                        <DoubleAnimation Storyboard.TargetName='FreeTrans'
+                                                         Storyboard.TargetProperty='X'
+                                                         From='30'
+                                                         To='0'
+                                                         Duration='0:0:0.30'>
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase Amplitude='0.3'
+                                                          EasingMode='EaseOut' />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName='AboutGrid'
+                                                         Storyboard.TargetProperty='Opacity'
+                                                         From='0'
+                                                         To='1.0'
+                                                         Duration='0:0:0.30' />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <Viewbox x:Name='Logo' />
+                    </Grid>
+                    <Grid x:Name='AboutGrid'
+                          HorizontalAlignment='Left'
+                          Margin='10,75,0,0'
+                          Width='418'>
+                        <TextBlock Text='Universal File/Folder Splitter and Joiner.&#xA;lightweight, speed, powerful.'
+                                   FontSize='14'
+                                   FontStretch='Expanded'
+                                   HorizontalAlignment='Left'
+                                   VerticalAlignment='Top'
+                                   Width='408'
+                                   Margin='0,50,0,0' />
+                        <TextBlock Text='Copyright © 2014 UFASoft Technology&#xA;                     2017 GD Studio.'
+                                   FontSize='14'
+                                   FontStretch='Expanded'
+                                   Height='50'
+                                   VerticalAlignment='Bottom'
+                                   Margin="10,0,-10,0" />
+                        <TextBlock Text=''
+                                   FontSize='14'
+                                   FontStretch='Expanded'
+                                   Margin='0,92,0,0'
+                                   Height='77'
+                                   VerticalAlignment='Top'
+                                   RenderTransformOrigin='0.498,0.278' />
+                        <TextBlock Text='Universal File Splitter &amp; Joiner'
+                                   FontStretch='Expanded'
+                                   HorizontalAlignment='Left'
+                                   VerticalAlignment='Top'
+                                   Width='315'
+                                   FontSize='16' />
+                        <TextBlock Text='Version 0.9.6 Build 10629'
+                                   FontStretch='Expanded'
+                                   HorizontalAlignment='Left'
+                                   VerticalAlignment='Top'
+                                   Width='408'
+                                   Margin='0,26,0,0'
+                                   FontSize='14' />
+                    </Grid>
+                    <Label x:Name='FreeLabel2'
+                           Content='BETA'
+                           Margin='0,12,3,0'
+                           VerticalAlignment='Top'
+                           RenderTransformOrigin='0.5,0.5'
+                           FontSize='18'
+                           FontWeight='Bold'
+                           HorizontalAlignment='Right'
+                           Width='71'
+                           VerticalContentAlignment='Center'
+                           HorizontalContentAlignment='Center'
+                           Visibility='Hidden'>
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform />
+                                <SkewTransform />
+                                <RotateTransform Angle='23.309' />
+                                <TranslateTransform X='1.006'
+                                                    Y='-2.334' />
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Button x:Name='bTweet'
+                            Content='{DynamicResource icon.Twitter}'
+                            HorizontalAlignment='Right'
+                            Margin='0,10,56,0'
+                            VerticalAlignment='Top'
+                            Width='41'
+                            Height='43' />
+                    <Button x:Name='bFeedback'
+                            Content='Feedback'
+                            HorizontalAlignment='Right'
+                            Height='36'
+                            Margin='0,58,10,0'
+                            VerticalAlignment='Top'
+                            Width='87' />
+                    <Button x:Name='bGithub'
+                            Content='Github'
+                            HorizontalAlignment='Right'
+                            Margin='0,10,10,0'
+                            VerticalAlignment='Top'
+                            Width='41'
+                            Height='43' />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

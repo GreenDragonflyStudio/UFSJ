@@ -1,0 +1,13 @@
+﻿<Application x:Class="UFSJ.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="clr-namespace:UFSJ" StartupUri="Views/ShellView.xaml" ShutdownMode="OnMainWindowClose" >
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source='Assert/Themes/Generic.xaml' />
+            </ResourceDictionary.MergedDictionaries>
+            <XmlDataProvider x:Key="UL" Source="Assert/Languages/English.xml" XPath="UFSJ" />
+        </ResourceDictionary>
+    </Application.Resources> 
+</Application>

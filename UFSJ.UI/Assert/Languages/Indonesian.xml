@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UFSJ>
+
+  <Language Name="Indonesian"
+            LCID="1057"
+            Local="Indonesia">
+    <Author Name ="UFASoft Technology"
+            Contact = "http://UFSJ.weebly.com/blog/" />
+  </Language>
+
+  <!--Add Bahasa Window-->
+  <AW
+    t="Tambah Bahasa"
+    n="Nama"
+    a="Oleh"
+    c="Kontak"
+    m="Komentar"/>
+  <!--Start Window-->
+  <SW
+    t="UFSJ"
+    f="Gratis"
+    c="Copyright © 2014 UFASoft Technology&#xA;"
+    v="Versi"
+    ts="BAGI"
+    tj="GABUNG"
+    tc="BANDING"
+    ta="CEKSUM" />
+
+  <!--Bahasa Window-->
+  <LW
+    t="Pengolah Bahasa"
+    s="Pilih Bahasa yang tersedia di daftar"
+    y="kamu bisa mengunduh Bahasa lain di Website UFSJ."
+    sp="Dukung kami dengan mengirim Paket Bahasa ke UFSJ."
+    bd="Unduh Paket Bahasa lain"
+    bc="Kontribusikan PaketBahasa"/>
+  <!--Edit Bahasa Window-->
+  <EW
+    t="UFSJ Penyunting Bahasa Mini"
+    l="Local"
+    i="ID"
+    v="Version"
+    a="Translated by"
+    c="Contact"
+    s="Source"
+    tr="Translated"
+    as="Auto save"/>
+
+  <!--Present Manager Window-->
+  <PW
+    t="Pengolah Present" />
+
+
+  <!--Facebook Window-->
+  <FV
+    p="Please like us on facebook to let us know that you are enjoying UFSJ."
+    l="Like us"
+    r="Remind me Latter"
+    d="Do not show this reminder again."/>
+
+
+  <!--Feedback Window-->
+  <FW
+    t="Umpan Balik"
+    a="Nama"
+    l="Email"
+    w="Komentar"
+    f="Umpan Balik"
+    n="Nama (Opsional)"
+    e="Email (Opsional) provide your email if you want a response"
+    c="Komentar... Please describe the bug or the feature."
+    r="Report Bug"
+    s="Suggest Feature"
+    m="Komentar"
+    o="Other"/>
+  
+  <!--Message Box-->
+  <MB
+    i="Information"
+    e="Error"
+    w="Warning" />
+
+  <!--Buttons-->
+  <BTN
+    ok="Oke"
+    ca="Batal"
+    ys="Ya"
+    no="Tidak"
+    ab="Batalkan"
+    rt="Coba Lagi"
+    ig="Abaikan"
+    cl="Tutup"
+    ad="Tambah"
+    ed="Sunting"
+    re="Hapus"
+    sa="Simpan"
+    co="Salin"
+    pa="Tempel"
+    cu="Potong"
+    pr="Sebelum"
+    ne="Setelah"
+    ap="Terapkan"
+    mg="Atur"
+    vw ="Lihat"
+    rf="Segarkan"
+    cv="Ubah"
+    hd="Sembunyikan"
+    st="Hentikan"
+    pe="Jeda"
+    rs="Lanjut"
+    bw="Cari"
+    od="Buka output Folder"
+    of="Buka output Berkas"/>
+
+  <!--Public-->
+  <PUB
+    s="Berkas Sumber"
+    o="Berkas Output (Opsional)"
+    n="Nama"
+    v="Nilai"
+    l="Bahasa"
+    c="Kostum"/>
+
+  <!--Size-->
+  <SZ
+    n="Bits"
+    m="MegaBits"
+    k="KiloBits"
+    g="GigaBits"
+    p="Bagian"  />
+
+  <!--Main Window-->
+  <MW
+    f="Berkas"
+    s="BAGI"
+    j="GABUNG"
+    h="CEKSUM"
+    c="BANDING"
+    t="TUGAS">
+    <F
+      o="PILIHAN"
+      c="KREDIT"
+      a="TENTANG" >
+      <O
+        o="Selalu di muka"
+        t="Tampilkan tab Tugas"
+        c="Tampilkan Konfirmasi Penimpaan"
+        u="Pembaruan"
+        p="Portabilitas"
+        a="Tampilan"
+        i="Dukungan"
+        f="Format"
+        s="Skrip">
+        <U
+          c="Periksa Pembaruan"
+          a="Setelah menggunakan"
+          b="Sebelum menggunakan"
+          n="Tak Pernah"
+          u="Pembaruan"
+          />
+        <P
+          s="you can change the executable to be Portable-Ready. see the help for more info"
+          u="Executable is not ready to be Portable"
+          a="Already Portable"
+          i="Not ready, detected inside install direktori"
+          r="Ready to Convert" />
+        <I
+          w="Associate with .001"
+          s="Start w\o open UFSJ (Silent)"
+          c="Integrate shell context menu" />
+        <F
+          d="UFSJ Standard"
+          h="UFSJ Hex"
+          s="Extension Suffix (Standard)"
+          p="Extension Prefix (New)"/>
+      </O>
+      <A
+        f="Umpan Balik"
+        a="Pembagi dan Penggabung Berkas/Folder Universal.&#xA;Ringan, Cepat, Kuat."/>
+    </F>
+    <S
+      o="Berkas Hasil"
+      p="Saran"
+      a="Tentukan Otomatis"
+      i="Bagi jadi"
+      d="Hapus Berkas Sumber setelah selesai"
+      g="Buat Penggabung Batch"
+      s="Bagi Sekarang">
+      <I
+        a="semua bagian"
+        f="hanya awal"
+        l="hanya akhir"
+        n="hanya untuk" />
+    </S>
+    <J
+      d="Hapus Pecahan Berkas setelah selesai"
+      s="Gabung Sekarang"/>
+    <H
+      r="Simpan Hasil di Berkas terpisah"
+      s="Hitung Sekarang"/>
+    <C
+      f="Berkas Kedua"
+      s="Bandingkan Sekarang"/>
+  </MW>
+
+  <!--Add Bahasa Window-->
+  <S
+    r="Siap"
+    b="Sibuk"
+    c="Membandingkan"
+    s="Membagi"
+    j="Menggabung"
+    h="Menghitung"
+    u="Memperbarui"
+    p="Memroses">
+  </S>
+  <I>
+    <D d="berkas identik, pilih berkas lain"
+       i="berkas tidak sama \nMD5 (Source) :{0}\nMD5 (Second):{1}"
+       s="berkas identik \nMD5 (Source) :{0}\nMD5 (Second):{1}"
+       l="ukuran berkas berbeda">
+
+    </D>
+  </I>
+</UFSJ>

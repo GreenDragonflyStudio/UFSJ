@@ -1,0 +1,118 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="StandardProgressBar" TargetType="ProgressBar">
+        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundLight}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundLight}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType='{x:Type ProgressBar}'>
+                    <Grid x:Name='TemplateRoot'>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name='CommonStates'>
+                                <VisualState x:Name='Determinate' />
+                                <VisualState x:Name='Indeterminate'>
+                                    <Storyboard RepeatBehavior='Forever'>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty='(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)' Storyboard.TargetName='Animation'>
+                                            <EasingDoubleKeyFrame KeyTime='0' Value='0.25' />
+                                            <EasingDoubleKeyFrame KeyTime='0:0:1' Value='0.25' />
+                                            <EasingDoubleKeyFrame KeyTime='0:0:2' Value='0.25' />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty='(UIElement.RenderTransformOrigin)' Storyboard.TargetName='Animation'>
+                                            <EasingPointKeyFrame KeyTime='0' Value='-0.5,0.5' />
+                                            <EasingPointKeyFrame KeyTime='0:0:1' Value='0.5,0.5' />
+                                            <EasingPointKeyFrame KeyTime='0:0:2' Value='1.5,0.5' />
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border BorderBrush='{TemplateBinding BorderBrush}' BorderThickness='{TemplateBinding BorderThickness}' Background='{TemplateBinding Background}' />
+                        <Rectangle x:Name='PART_Track' />
+                        <Grid x:Name='PART_Indicator' ClipToBounds='True' HorizontalAlignment='Left'>
+                            <Rectangle x:Name='Indicator' Fill='{DynamicResource BackgroundSelected}' />
+                            <Rectangle x:Name='Animation' Fill='{DynamicResource BackgroundSelected}' RenderTransformOrigin='0.5,0.5'>
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property='Orientation' Value='Vertical'>
+                            <Setter Property='LayoutTransform' TargetName='TemplateRoot'>
+                                <Setter.Value>
+                                    <RotateTransform Angle='-90' />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property='IsIndeterminate' Value='True'>
+                            <Setter Property='Visibility' TargetName='Indicator' Value='Collapsed' />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RoundProgressBar" TargetType="ProgressBar">
+        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundLight}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundLight}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType='{x:Type ProgressBar}'>
+                    <Grid x:Name='TemplateRoot'>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name='CommonStates'>
+                                <VisualState x:Name='Determinate' />
+                                <VisualState x:Name='Indeterminate'>
+                                    <Storyboard RepeatBehavior='Forever'>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty='(UIElement.RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)' Storyboard.TargetName='Animation'>
+                                            <EasingDoubleKeyFrame KeyTime='0' Value='0.25' />
+                                            <EasingDoubleKeyFrame KeyTime='0:0:1' Value='0.25' />
+                                            <EasingDoubleKeyFrame KeyTime='0:0:2' Value='0.25' />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border BorderBrush='{TemplateBinding BorderBrush}' BorderThickness='{TemplateBinding BorderThickness}' Background='{TemplateBinding Background}' />
+                        <Rectangle x:Name='PART_Track' />
+                        <Grid x:Name='PART_Indicator' ClipToBounds='True' HorizontalAlignment='Left'>
+                            <Path x:Name='Animation' Fill='{DynamicResource BackgroundSelected}' Data="M382.533,0C572.061,7E-06,728.955,138.523,759.294,320.138L685.132,320.138C655.69,179.49 531.251,73.5457 382.533,73.5457 211.976,73.5457 73.2287,212.825 73.2287,384 73.2287,555.175 211.976,694.454 382.533,694.454 531.251,694.454 647.155,603.594 725.01,450.418 695.146,629.16 575.87,763.739 391.368,767.901L384,767.984 384,768 382.539,768 382.533,768 382.529,768 343,768 343,765.969 333.807,764.914C145.527,740.886 -4E-06,579.468 0,384 -4E-06,171.931 171.238,7E-06 382.533,0z" Stretch="Uniform" Width="Auto" Height="Auto" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle='9' />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Rectangle x:Name='Indicator' Fill='{DynamicResource BackgroundSelected}' />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property='Orientation' Value='Vertical'>
+                            <Setter Property='LayoutTransform' TargetName='TemplateRoot'>
+                                <Setter.Value>
+                                    <RotateTransform Angle='-90' />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property='IsIndeterminate' Value='True'>
+                            <Setter Property='Visibility' TargetName='Indicator' Value='Collapsed' />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

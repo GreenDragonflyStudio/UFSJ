@@ -1,0 +1,69 @@
+﻿<Window x:Class="UFSJ.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UFSJ.UI"
+        xmlns:l="clr-namespace:UFSJ.Views"
+        mc:Ignorable="d"
+        Title="UFSJ"
+        Height="420"
+        Width="440"
+        Background='{DynamicResource BackgroundLight}'
+        WindowStartupLocation='CenterScreen'
+        ResizeMode='CanMinimize'>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Description='Universal File Splitter &amp; Joiner'>
+            <TaskbarItemInfo.ThumbButtonInfos>
+                <ThumbButtonInfo Description='Settings' />
+            </TaskbarItemInfo.ThumbButtonInfos>
+        </TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
+    <Grid x:Name='WindowGrid'>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height='25' />
+        </Grid.RowDefinitions>
+        <TabControl x:Name='mainTab'
+                    SelectedIndex='1'
+                    BorderBrush='#FFDADBDC'
+                    IsManipulationEnabled='True'>
+            <TabItem x:Name='mainTabFile'
+                     Header='File'
+                     Padding='10,6'
+                     AllowDrop='False'
+                     IsTabStop='False'>
+                <l:FileView />
+            </TabItem>
+            <TabItem x:Name='mainTabSplit'
+                     Header='Split'>
+                <l:SplitView />
+            </TabItem>
+            <TabItem x:Name='mainTabJoin'
+                     Header='Join'>
+                <l:JoinView />
+            </TabItem>
+            <TabItem x:Name='mainTabHash'
+                     Header='Checksum'>
+                <l:ChecksumView />
+            </TabItem>
+            <TabItem x:Name='mainTabCompare'
+                     Header='Compare'>
+                <l:CompareView />
+            </TabItem>
+            <TabItem x:Name='mainTabTask'
+                     Header='Task'>
+                <l:TaskView />
+            </TabItem>
+        </TabControl>
+        <ProgressBar x:Name='prgStatus'
+                     Grid.Row='1'  />
+        <StatusBar x:Name='mainStatusBar'
+                   VerticalContentAlignment='Center' Background='#0f000000'
+                   Grid.Row='1' >
+            <StatusBarItem x:Name='siStatus'
+                           Content='Ready'
+                           HorizontalContentAlignment='Stretch' />
+        </StatusBar>
+    </Grid>
+</Window>
